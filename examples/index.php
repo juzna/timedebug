@@ -12,8 +12,9 @@ define('EXAMPLES', __DIR__); // current directory just for testing of directory 
 
 
 // autoload for composer dependencies
-require_once(__DIR__ . '/../vendor/autoload.php');
-
+if ((!$loader = @include __DIR__ . '/../vendor/autoload.php') && (!$loader = @include __DIR__ . '/../../../autoload.php')) {
+	throw new Exception('Install dependencies using `composer update --dev`');
+}
 
 
 /**
